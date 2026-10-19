@@ -9,7 +9,7 @@
 
 Përshkrimi i projektit
 
-The Last Seed është një lojë eksplorimi 3D ku lojtari kontrollon një robot të vogël kopshtarie që synon ta rikthejë jetën në një planet të vdekur.
+-The Last Seed është një lojë eksplorimi 3D ku lojtari kontrollon një robot të vogël kopshtarie që synon ta rikthejë jetën në një planet të vdekur.
 
 Mekanika e lojës:
 
