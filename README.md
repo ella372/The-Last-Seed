@@ -1,4 +1,4 @@
-# Queens – 8 Mbretëreshat
+# The Last Seed
 
 ## Anëtarët
 
@@ -7,19 +7,39 @@
 - Studenti C: Ela Tafilaj
               Hana Xhemajli
 
-## Përshkrimi
+Përshkrimi i projektit
 
-Queens është një lojë puzzle logjike ku lojtari duhet të vendosë 8 mbretëresha në një tabelë 8×8 pa lejuar që ato të sulmojnë njëra-tjetrën.
+The Last Seed është një lojë eksplorimi 3D ku lojtari kontrollon një robot të vogël kopshtarie që synon ta rikthejë jetën në një planet të vdekur.
 
-## Qëllimi
+Mekanika e lojës:
 
-Qëllimi është të krijohet një lojë e thjeshtë që përdor kufizime logjike dhe algoritem për kontrollimin dhe gjetjen e zgjidhjes.
+-Eksplorimi i zonave dhe mbledhja e burimeve.
 
-## Projekti
+-Mbjellja dhe ujitja e bimëve.
+
+-Përdorimi i aftësive të bimëve për të kapërcyer pengesat.
+
+-Zhbllokimi i zonave të reja dhe rikthimi i jetës në planet.
+
+Qëllimi:
+
+-Të rritet Ancient Tree në Ancient Grove për ta përfunduar rikthimin e jetës në planet.
+
+Teknologjitë:
+
+-Unity
+
+-C#
+
+-3D Low-Poly
+
 
 Dokumentacioni i projektit përfshin:
 
-Project Charter v0.1 – Versioni i parë i projektit përmban analizën e ideve, Problem Statement, rregullat e lojës, komponentin algoritmik dhe kufizimet e projektit.
+-Project Charter v0.1 – Analiza e ideve, Problem Statement, rregullat e lojës, komponenti algoritmik dhe kufizimet e projektit.
 
-Project Charter v0.2 – përditësimi sipas analizës së lojtarit dhe kontekstit të përdorimit. Player & Use Context Canvas, historitë e lojtarit, reagimi i sistemit, rreziqet e përvojës dhe analiza e lojës edukative.
+-Project Charter v0.2 – Analiza e lojtarit dhe kontekstit të përdorimit, Player & Use Context Canvas, historitë e lojtarit dhe rreziqet e përvojës.
+
+-Game Design Document (GDD) v0.1 – Core Gameplay Loop, Game States, rregullat e testueshme, kushtet e fitores, rastet e testimit dhe Playtest Report.
+
 
