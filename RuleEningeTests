@@ -1,0 +1,78 @@
+using NUnit.Framework;
+using LastSeed.Domain;
+
+public class RuleEngineTests
+{
+    private class FakeFeedback : IFeedbackSink
+    {
+        public string Last;
+        public void Show(string m) { Last = m; }
+    }
+
+    private GameState state;
+    private FakeFeedback fb;
+    private RuleEngine rules;
+
+    [SetUp]
+    public void Setup()
+    {
+        state = new GameState();
+        fb = new FakeFeedback();
+        rules = new RuleEngine(state, fb);
+    }
+
+
+    public void FullLoop_RestoresArea()
+    {
+        Assert.IsTrue(rules.PlantPioneer());
+        Assert.IsTrue(rules.WaterPlant());
+        Assert.IsTrue(rules.WaterPlant());
+        Assert.AreEqual(PlantStage.Grown, state.PS1.Stage);
+        Assert.AreEqual(SoilState.Fertile, state.PS1.Soil);
+        Assert.AreEqual(GameStatus.AreaRestored, state.Status);
+        Assert.AreEqual(0, state.Inventory.Water);
+    }
+
+
+    public void Water_WithZeroWater_IsRejected()
+    {
+        rules.PlantPioneer();
+        state.Inventory.Water = 0;
+        Assert.IsFalse(rules.WaterPlant());
+        Assert.AreEqual(PlantStage.Seed, state.PS1.Stage);
+        StringAssert.Contains("Need Water", fb.Last);
+    }
+
+    public void Plant_WithoutSeed_IsRejected()
+    {
+        state.Inventory.PioneerSeeds = 0;
+        Assert.IsFalse(rules.PlantPioneer());
+        Assert.AreEqual("No seeds available", fb.Last);
+    }
+
+    public void CollectWater_CapsAtFive()
+    {
+        for (int i = 0; i < 10; i++) rules.CollectWater();
+        Assert.AreEqual(5, state.Inventory.Water);
+        Assert.IsFalse(rules.CollectWater());
+    }
+
+    public void Plant_Twice_IsRejected()
+    {
+        state.Inventory.PioneerSeeds = 2;
+        rules.PlantPioneer();
+        Assert.IsFalse(rules.PlantPioneer());
+        Assert.AreEqual(1, state.Inventory.PioneerSeeds);
+    }
+
+    
+    public void Reset_RestoresInitialState()
+    {
+        rules.PlantPioneer(); rules.WaterPlant(); rules.WaterPlant();
+        state.Reset();
+        Assert.AreEqual(GameStatus.Playing, state.Status);
+        Assert.AreEqual(PlantStage.None, state.PS1.Stage);
+        Assert.AreEqual(2, state.Inventory.Water);
+        Assert.AreEqual(1, state.Inventory.PioneerSeeds);
+    }
+}
